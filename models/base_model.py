@@ -9,6 +9,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """The constructor/instantiation method"""
+        from models import storage
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -20,6 +21,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """The informal string representation of an instance"""
@@ -30,7 +32,9 @@ class BaseModel:
         """updates the public instance attribute
            updated_at with the current datetime
         """
+        from models import storage
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values ofi
