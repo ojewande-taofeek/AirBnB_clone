@@ -27,7 +27,7 @@ class FileStorage:
     def all(self):
         """returns the dictionary __objects"""
         return self.__object
-    
+
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         obj_dict = dict()
