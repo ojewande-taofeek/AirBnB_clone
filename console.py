@@ -21,18 +21,18 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """Overrides the default EOF method"""
         return True
-    
+
     def do_quit(self, line):
         """Terminates the interpreter"""
         return True
-    
+
     def emptyline(self):
         """Overrides the default emptyline"""
         pass
 
-    # def postloop(self):
-    #    """To decide what happens when a loop is terminated"""
-    #    print()
+    def postloop(self):
+        """To decide what happens when a loop is terminated"""
+        print()
 
     def do_create(self, line):
         """Creates a new instance of BaseModel"""
@@ -47,45 +47,45 @@ class HBNBCommand(cmd.Cmd):
         new_instance = class_cmd()
         new_instance.save()
         print(new_instance.id)
-    
+
     def do_show(self, line):
-            """Shows an instance based on its class name and id"""
-            line_parsed = shlex.split(line)
-            if len(line_parsed) == 0:
-                print("** class name missing **")
-                return
-            if line_parsed[0] not in all_class:
-                print("** class doesn't exist **")
-                return
-            if len(line_parsed) == 2:
-                try:
-                    key = "{}.{}".format(line_parsed[0], line_parsed[1])
-                    all_objects = storage.all()
-                    print(all_objects[key])
-                except KeyError:
-                    print("** no instance found **")
-            else:
-                print("** instance id missing **")
-                
+        """Shows an instance based on its class name and id"""
+        line_parsed = shlex.split(line)
+        if len(line_parsed) == 0:
+            print("** class name missing **")
+            return
+        if line_parsed[0] not in all_class:
+            print("** class doesn't exist **")
+            return
+        if len(line_parsed) == 2:
+            try:
+                key = "{}.{}".format(line_parsed[0], line_parsed[1])
+                all_objects = storage.all()
+                print(all_objects[key])
+            except KeyError:
+                print("** no instance found **")
+        else:
+            print("** instance id missing **")
+
     def do_destroy(self, line):
-            """Shows an instance based on its class name and id"""
-            line_parsed = shlex.split(line)
-            if len(line_parsed) == 0:
-                print("** class name missing **")
-                return
-            if line_parsed[0] not in all_class:
-                print("** class doesn't exist **")
-                return
-            if len(line_parsed) == 2:
-                try:
-                    key = "{}.{}".format(line_parsed[0], line_parsed[1])
-                    all_objects = storage.all()
-                    del all_objects[key]
-                    storage.save()
-                except KeyError:
-                    print("** no instance found **")
-            else:
-                print("** instance id missing **")
+        """Shows an instance based on its class name and id"""
+        line_parsed = shlex.split(line)
+        if len(line_parsed) == 0:
+            print("** class name missing **")
+            return
+        if line_parsed[0] not in all_class:
+            print("** class doesn't exist **")
+            return
+        if len(line_parsed) == 2:
+            try:
+                key = "{}.{}".format(line_parsed[0], line_parsed[1])
+                all_objects = storage.all()
+                del all_objects[key]
+                storage.save()
+            except KeyError:
+                print("** no instance found **")
+        else:
+            print("** instance id missing **")
 
     def do_all(self, line):
         """Prints all string representation of all
@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
             except KeyError:
                 print("** no instance found **")
-    
+
     def do_count(self, line):
         """Count the number of instances of a class"""
         line_parsed = shlex.split(line)
@@ -159,7 +159,6 @@ class HBNBCommand(cmd.Cmd):
         line_parsed = shlex.split(line)
         line_len = len(line_parsed)
         try:
-            # class_name = line_parsed[0]
             if line_len == 1:
                 mtd_str = line_parsed[0]
             else:
@@ -172,16 +171,13 @@ class HBNBCommand(cmd.Cmd):
                 if i == 1:
                     continue
                 new_line += line_parsed[i] + " "
-        # print(new_line)
-        # if class_name in all_class:
         try:
             called_mtd = getattr(self, "do_" + mtd_str)
             if called_mtd:
                 called_mtd("{}".format(new_line))
         except AttributeError:
             pass
-        # else:
-        #    pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
