@@ -16,7 +16,8 @@ class BaseModel:
                     continue
                 elif key == "updated_at" or key == "created_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                self.__dict__[key] = value
+                # self.__dict__[key] = value
+                setattr(self, key, value)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
