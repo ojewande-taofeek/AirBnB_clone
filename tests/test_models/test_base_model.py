@@ -26,7 +26,13 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(isinstance(self.base_1, object))
 
     def test_attributes(self):
-        """To test the BaseModel attibutes are instantiated"""
+        """Test the attributes of BaseModel as instantiated"""
+        self.assertTrue(getattr(self.base_1, "id"))
+        self.assertTrue(getattr(self.base_1, "created_at"))
+        self.assertTrue(getattr(self.base_1, "updated_at"))
+
+    def test_attributes_values(self):
+        """To test the BaseModel attibutes values as instantiated"""
         # base_1 = BaseModel()
         expected_id = "{}\n".format(self.base_1.id)
         expected_updated_at = "{}\n".format(self.base_1.updated_at)
