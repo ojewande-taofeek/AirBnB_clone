@@ -32,6 +32,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(getattr(self.base_1, "updated_at"))
         self.assertTrue(getattr(self.base_1, "save"))
         self.assertTrue(getattr(self.base_1, "to_dict"))
+        self.assertTrue(getattr(self.base_1, "__str__"))
+        self.assertTrue(getattr(self.base_1, "__init__"))
 
     def test_attributes_values(self):
         """To test the BaseModel attibutes values as instantiated"""
