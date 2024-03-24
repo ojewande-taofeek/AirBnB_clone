@@ -24,10 +24,21 @@ class TestUser(unittest.TestCase):
 
     def test_attributes(self):
         """Test if User has an attribute"""
-        """
-            self.assertTrue(getattr(self.user_1.__class__, "email"))
-            self.asserTrue(getattr(self.user_1, "password"))
-            self.asserTrue(getattr(self.user_1, "first_name"))
-            self.asserTrue(getattr(self.user_1, "last_name"))
-        """
+        self.user_1.email = "taofeekojewande@gmail.com"
+        self.user_1.first_name = "taofeek"
+        self.user_1.last_name = "Ojewande"
+        self.user_1.password = "whocares"
+        self.assertTrue(getattr(self.user_1, "email"))
+        self.assertTrue(getattr(self.user_1, "password"))
+        self.assertTrue(getattr(self.user_1, "first_name"))
+        self.assertTrue(getattr(self.user_1, "last_name"))
         self.assertTrue(getattr(self.user_1, "updated_at"))
+        self.assertTrue(getattr(self.user_1, "created_at"))
+        self.assertTrue(getattr(self.user_1, "id"))
+
+    def test_attributes_type(self):
+        """Test each type of attribute"""
+        self.assertEqual(str, type(self.user_1.email))
+        self.assertEqual(str, type(self.user_1.password))
+        self.assertEqual(str, type(self.user_1.last_name))
+        self.assertEqual(str, type(self.user_1.first_name))
