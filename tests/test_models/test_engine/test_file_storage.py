@@ -17,7 +17,7 @@ class Test_FileStorage(unittest.TestCase):
     def test_attributes(self):
         """Test all attributes"""
         self.assertTrue(getattr(storage, "_FileStorage__file_path"))
-        self.assertTrue(getattr(storage, "_FileStorage__object"))
+        self.assertTrue(getattr(storage, "_FileStorage__objects"))
         self.assertTrue(getattr(storage, "all"))
         self.assertTrue(getattr(storage, "new"))
         self.assertTrue(getattr(storage, "save"))
@@ -27,5 +27,5 @@ class Test_FileStorage(unittest.TestCase):
         """Test the types for attributes method"""
         new_dict = storage.all()
         self.assertEqual(type(new_dict), dict)
-        self.assertEqual(type(FileStorage._FileStorage__object), dict)
-        self.assertEqual(type(FileStorage._FileStorage__file_path), str)
+        self.assertEqual(type(storage._FileStorage__objects), dict)
+        self.assertEqual(type(storage._FileStorage__file_path), str)
