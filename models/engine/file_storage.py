@@ -15,23 +15,23 @@ class FileStorage:
        deserializes JSON file to instances
     """
     __file_path = "file.json"
-    __object = dict()
+    __objects = dict()
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id
            stores a new instance in __object
         """
         obj_key = obj.__class__.__name__ + '.' + obj.id
-        self.__object[obj_key] = obj
+        self.__objects[obj_key] = obj
 
     def all(self):
         """returns the dictionary __objects"""
-        return self.__object
+        return self.__objects
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         obj_dict = dict()
-        for key, obj in self.__object.items():
+        for key, obj in self.__objects.items():
             obj_dict[key] = obj.to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as file:
             json.dump(obj_dict, file)
@@ -48,6 +48,6 @@ class FileStorage:
                 for key, value in new_obj_dict.items():
                     class_name = value['__class__']
                     class_name = globals()[class_name]
-                    FileStorage.__object[key] = class_name(**value)
+                    FileStorage.__objects[key] = class_name(**value)
         except FileNotFoundError:
             pass
