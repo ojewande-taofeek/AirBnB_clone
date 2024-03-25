@@ -27,3 +27,5 @@ class Test_FileStorage(unittest.TestCase):
         """Test the types for attributes method"""
         new_dict = storage.all()
         self.assertEqual(type(new_dict), dict)
+        self.assertEqual(type(FileStorage._FileStorage__object), dict)
+        self.assertEqual(type(FileStorage._FileStorage__file_path), str)
