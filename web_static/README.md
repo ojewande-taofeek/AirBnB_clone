@@ -58,7 +58,7 @@ At the end of this project, you are expected to be able to [explain to anyone](h
 - Allowed editors: vi, vim, emacs
 - All your files should end with a new line
 - A README.md file, at the root of the folder of the project, is mandatory
-- Your code should be W3C compliant and validate with W3C-Validator
+- Your code should be W3C compliant and validate with [W3C-Validator](https://intranet.alxswe.com/rltoken/RGLQtJVf7Ga3mU8NX9zADQ)
 - All your CSS files should be in styles folder
 - All your images should be in images folder
 - You are not allowed to use !important and id (#... in the CSS file)
