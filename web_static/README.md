@@ -6,7 +6,7 @@ Now that you have a command interpreter for managing your AirBnB objects, it’s
 
 Before developing a big and complex web application, we will build the front end step-by-step.
 
-The first step is to “design” / “sketch” / “prototype” each element:
+The first step is to *“design” / “sketch” / “prototype”* each element:
 
 - Create simple HTML static pages
 - Style guide
@@ -67,3 +67,5 @@ At the end of this project, you are expected to be able to [explain to anyone](h
 - Current screenshots have been done on Chrome 56 or more.
 - No cross browsers
 - You have to follow all requirements but some margin/padding are missing - you should try to fit as much as you can to screenshots
+
+![Image](https://github.com/ojewande-taofeek/AirBnB_clone/blob/main/web_static/keep/hbnb_step1.png)
